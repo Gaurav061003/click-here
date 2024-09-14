@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apology Message</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            background: #3498db;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        a:hover {
+            background: #2980b9;
+        }
+        .hidden {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        .message {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        /* Butterfly styling */
+        .butterfly {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://i.imgur.com/k7lDyZN.png'); /* Butterfly image */
+            background-size: cover;
+            opacity: 0;
+            animation: fly 10s ease-in-out infinite;
+            z-index: 1;
+        }
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+                transform: translate(100px, -200px) scale(1);
+            }
+            50% {
+                transform: translate(-300px, -100px) scale(0.7);
+            }
+            75% {
+                transform: translate(200px, 200px) scale(1);
+            }
+            100% {
+                transform: translate(500px, -300px) scale(0.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I'm Really Sorry</h1>
+        <p>Hello Kundan,</p>
+        <p>I wanted to take a moment to apologize for the morning argument. I deeply regret any inconvenience or hurt I may have caused you. Please accept my sincere apologies.</p>
+        <a href="#" id="showMessageLink">Click here to see my apology message</a>
+        <div id="apologyMessage" class="hidden">
+            <p class="message" id="finalMessage">Kundan bhai buralag gaya kya?</p>
+        </div>
+    </div>
+
+    <!-- Butterfly elements -->
+    <div class="butterfly" id="butterfly1"></div>
+    <div class="butterfly" id="butterfly2"></div>
+    <div class="butterfly" id="butterfly3"></div>
+    <div class="butterfly" id="butterfly4"></div>
+
+    <script>
+        // Show the apology message
+        document.getElementById('showMessageLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('apologyMessage').classList.toggle('hidden');
+            showButterflies(); // Trigger butterfly animation
+        });
+
+        // Final message interaction
+        document.getElementById('finalMessage').addEventListener('click', function() {
+            alert('Just kidding! I really do apologize.');
+        });
+
+        // Function to show butterflies
+        function showButterflies() {
+            let butterflies = document.querySelectorAll('.butterfly');
+            butterflies.forEach(function(butterfly, index) {
+                setTimeout(function() {
+                    butterfly.style.opacity = '1'; // Show butterfly
+                    butterfly.style.animation = `fly 10s ease-in-out ${index * 1}s infinite`; // Fly animation with delay
+                }, index * 500); // Each butterfly appears with a delay
+            });
+        }
+    </script>
+</body>
+</html>
